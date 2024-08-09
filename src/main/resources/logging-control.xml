@@ -14,6 +14,8 @@
         </rollingPolicy>
         <encoder>
             <!-- Spring Boot 기본 패턴 사용 -->
+            <!-- <pattern>${CONSOLE_LOG_PATTERN}</pattern> -->
+            <!-- Spring Boot 기본 패턴에서 색상코드를 제외하고 사용 -->
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
@@ -26,6 +28,9 @@
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
+            <!-- Spring Boot 기본 패턴 사용 -->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <!-- msg 자체에 패턴을 적용하기 위한 단순 선언 -->
             <pattern>%msg%n</pattern>
         </encoder>
     </appender>
@@ -39,8 +44,9 @@
     <!-- LogController 클래스에 대한 로거 -->
     <logger level="INFO"
             name="ac.su.kdt.loggingcontrol.controller.LogController"
-            additivity="false">
+            additivity="false"> <!-- (additivity 는 상위 패키지 로그 전파 여부)-->
         <appender-ref ref="LOGCONTROLLER" />
         <!--<appender-ref ref="CONSOLE" />-->
     </logger>
+
 </configuration>
